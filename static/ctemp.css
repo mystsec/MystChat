@@ -1,0 +1,567 @@
+:root {
+  /*default colors*/
+  --top: #333;
+  --top_text: #fff;
+  --mid: #fff;
+  --input_border: #ccc;
+  --input_text: #000;
+  --btn: #4caf50;
+  --btn_hover: #43a047;
+  --btn_text: #fff;
+  --grey: #fefefe;
+  --upload: #fff;
+  --upload_text: #000;
+  --upload_border: #888;
+  --link: #808080;
+  --link_text: #fff;
+  --text: #000;
+  --loading_inner: #3498db;
+  --loading_border: #f3f3f3;
+  --error: #d53737;
+  --error_hover: #ac3b23;
+
+  --message_height_adj: 270px;
+  --message_top_adj: 50px;
+  --mobile_adj: 350px;
+}
+
+[data-theme="dark"]{
+  /*misty-night colors*/
+  --top: #151515;
+  --top_text: #fff;
+  --mid: #000;
+  --input_border: #ccc;
+  --input_text: #fff;
+  --btn: #7992a8;
+  --btn_hover: #4caf50;
+  --btn_text: #000;
+  --inv_btn: #4f9bdd;
+  --inv_btn_hover: #4caf50;
+  --grey: #353535;
+  --upload: #353535;
+  --upload_text: #e3e3e3;
+  --upload_border: #888;
+  --link: #353535;
+  --link_text: #e3e3e3;
+  --text: #fff;
+  --loading_inner: #708c75;
+  --loading_border: #f3f3f3;
+  --border: #ccc;
+}
+
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--mid);
+}
+
+#header {
+  background-color: var(--top);
+  color: var(--top_text);
+  padding: 20px;
+
+}
+
+#header h1 {
+  margin: 0;
+}
+
+#hnm {
+  cursor: pointer;
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+[link="off"]{
+  --message_height_adj: 220px;
+  --message_top_adj: 0px;
+  --mobile_adj: 250px;
+}
+
+#link {
+  background-color: var(--link);
+  color: var(--text);
+  position: absolute;
+  top: 73px;
+  width: 100vw;
+  height: 50px;
+}
+
+#link div[id="invite"] {
+  margin-right: 5vw;
+  background-color: var(--btn);
+  border: none;
+  border-radius: 5px;
+  color: var(--btn_text);
+  font-size: 12px;
+  cursor: pointer;
+  float: right;
+  margin-top: calc((50px - 36px)/2);
+}
+
+#link div[id="invite"]:hover {
+  background-color: var(--btn_hover);
+}
+
+#invite p[id="nti"] {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#link p[id="inm"] {
+  float: left;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  width: calc(85vw - 100px);
+  height: 45px;
+  font-size: 14px;
+  margin-top: 18px;
+}
+
+@media (max-width: 354px) {
+  #link p[id="inm"] {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 334px) {
+  #link p[id="inm"] {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 316px) {
+  #link p[id="inm"] {
+    font-size: 11px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 300px) {
+  #link p[id="inm"] {
+    font-size: 10px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 282px) {
+  #link p[id="inm"] {
+    font-size: 10px;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 256px) {
+  #link p[id="inm"] {
+    font-size: 10px;
+    margin-top: 15px;
+    width: calc(85vw - 120px);
+  }
+}
+
+#cd {
+  background-color: var(--link);
+  color: var(--text);
+  position: absolute;
+  top: 73px;
+  width: 100vw;
+  height: 50px;
+}
+
+#cd div[id="end"] {
+  margin-right: 5vw;
+  background-color: var(--error);
+  border: none;
+  border-radius: 5px;
+  color: var(--btn_text);
+  font-size: 12px;
+  cursor: pointer;
+  float: right;
+  margin-top: calc((50px - 36px)/2);
+}
+
+#cd div[id="end"]:hover {
+  background-color: var(--error_hover);
+}
+
+#end p[id="endb"] {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#cd p[id="cdt"] {
+  float: left;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  width: calc(85vw - 100px);
+  height: 45px;
+  font-size: 14px;
+  margin-top: 18px;
+}
+
+@media (max-width: 354px) {
+  #cd p[id="cdt"] {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 334px) {
+  #cd p[id="cdt"] {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 316px) {
+  #cd p[id="cdt"] {
+    font-size: 11px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 300px) {
+  #cd p[id="cdt"] {
+    font-size: 10px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 282px) {
+  #cd p[id="cdt"] {
+    font-size: 10px;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 256px) {
+  #cd p[id="cdt"] {
+    font-size: 10px;
+    margin-top: 15px;
+    width: calc(85vw - 120px);
+  }
+}
+
+#chat-room {
+  width: calc(100vw);
+  float: right;
+  top: calc(73px + var(--message_top_adj));
+  position: absolute;
+}
+
+#messages {
+  height: calc(100vh - var(--message_height_adj));/*calc(100% - 120px);*/
+  overflow-y: scroll;
+  padding: 20px;
+  scroll-behavior: smooth;
+  background-color:  var(--mid);
+  color: var(--text);
+  word-wrap: break-word;
+}
+
+#messages div small {
+  color: var(--mid);
+}
+
+#messages div:hover small{
+  color: var(--text);
+}
+
+#message-form {
+  bottom: 0;
+  position: fixed;
+  width: calc(100vw);
+  background-color:  var(--mid);
+}
+
+#message-form input {
+  border: 1px solid var(--input_border);
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 10px;
+  width: calc(100vw - 20px);
+  float: right;
+  clear: right;
+  margin-right: 10px;
+  background-color: var(--grey);
+  color: var(--input_text);
+}
+
+#message-form button {
+  background-color: var(--btn);
+  border: none;
+  border-radius: 5px;
+  color: var(--btn_text);
+  font-size: 16px;
+  padding: 10px;
+  width: 80px;
+  float: right;
+  clear: right;
+  margin-right: 10px;
+}
+
+#message-form button:hover {
+  background-color: var(--btn_hover);
+  cursor: pointer;
+}
+
+/* The popup window */
+.popup {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 73px;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  text-align: center;
+  color: var(--upload_text);
+}
+
+
+
+/* The popup content */
+.popup-content {
+  position: relative;
+  background-color: var(--upload);
+  margin: auto;
+  padding: 20px;
+  border: 1px solid var(--upload_border);
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+  color: var(--upload_text);
+}
+
+/* Add animation to the popup content */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The close button */
+.close-button {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #eee;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#init-form div[id="upload"] {
+  width: 50%;
+  height: 45px;
+  margin: 10px 0 0 20vw;
+  background-color: var(--btn);
+  border: none;
+  border-radius: 5px;
+  color: var(--btn_text);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#init-form p[id="nt"] {
+  padding-top: 13px;
+}
+
+#init-form button {
+  width: 50%;
+  height: 45px;
+  background-color: var(--btn);
+  border: none;
+  border-radius: 5px;
+  color: var(--btn_text);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#init-form button:hover {
+  background-color: var(--btn_hover);
+}
+
+#loading-popup {
+  position: fixed;
+  top: 73px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  color: var(--text);
+}
+
+#connection-popup {
+  position: fixed;
+  top: 73px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  color: var(--text);
+}
+
+.loading-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.loading-container button {
+  padding: 10px;
+  background-color: var(--btn);
+  border: none;
+  border-radius: 5px;
+  color: var(--btn_text);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.loading-container button:hover {
+  background-color: var(--btn_hover);
+}
+
+.loading-wheel {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--loading_border);
+  border-radius: 50%;
+  border-top-color: var(--loading_inner);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.right-msg {
+  float: right;
+  text-align: right;
+}
+
+#error-message {
+  color: var(--error);
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+
+
+
+/* Add styles for the menu container */
+#chat-groups-menu {
+    width: 200px;
+    height: 100%;
+    background-color: var(--grey);
+    color: var(--text);
+    position: fixed;
+    left: 0;
+    top: 73px; /* Adjust as necessary */
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    z-index: 1;
+
+}
+
+/* Add styles for the menu header */
+#menu-header {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#create-group-button {
+  background-color: var(--btn);
+  border: none;
+  border-radius: 5px;
+  color: var(--btn_text);
+  font-size: 16px;
+  padding: 10px;
+  width: 140px;
+  float: right;
+  clear: right;
+  margin-right: 20px;
+}
+
+#create-group-button:hover {
+  background-color: var(--btn_hover);
+  cursor: pointer;
+}
+
+/* Add styles for the groups list */
+#groups-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Add media query for smaller screens */
+@media (max-width: 600px) {
+    #chat-groups-menu {
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        left: 0;
+        top: 73;
+        /* Hide the menu by default */
+        display: none;
+    }
+    #chat-room {
+      width: 100vw;
+      float: right;
+    }
+
+    #messages {
+      height: calc(100vh - var(--mobile_adj));
+      overflow-y: scroll;
+      padding: 20px;
+      scroll-behavior: smooth;
+    }
+
+    #message-form {
+      bottom: 0;
+      position: fixed;
+      width: 100%;
+    }
+
+    #message-form input {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+      padding: 10px;
+      width: calc(100% - 20px);
+      float: right;
+      clear: right;
+      margin-right: 10px;
+    }
+}

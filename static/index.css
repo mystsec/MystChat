@@ -1,0 +1,180 @@
+[data-theme="light"]{
+  /*light mode colors*/
+  --top: #333;
+  --top_text: #fff;
+  --mid: #737373;
+  --input_border: #ccc;
+  --input_text: #000;
+  --btn: #3ed744;
+  --btn_hover: #47bf4c;
+  --btn_text: #fff;
+  --grey: #fefefe;
+  --upload: #fff;
+  --upload_text: #000;
+  --upload_border: #888;
+  --link: #fff;
+  --link_hover: #c2c2c2;
+  --link_text: #fff;
+  --text: #000;
+  --loading_inner: #3498db;
+  --loading_border: #f3f3f3;
+  --error: red;
+  --gradient_c1: #5ca0eb;
+  --gradient_c2: #c670e8;
+
+  --message_height_adj: 270px;
+  --message_top_adj: 50px;
+}
+
+:root {
+  /*dark mode colors*/
+  --top: #151515;
+  --top_text: #fff;
+  --mid: #000;
+  --input_border: #ccc;
+  --input_text: #fff;
+  --btn: #00ffff;/*#7992a8;*/
+  --btn_hover: #00dacd;/*#4caf50;*/
+  --btn_text: #000;
+  --inv_btn: #4f9bdd;
+  --inv_btn_hover: #4caf50;
+  --grey: #353535;
+  --upload: #353535;
+  --upload_text: #e3e3e3;
+  --upload_border: #888;
+  --link: #353535;
+  --link_hover: #444;
+  --link_text: #e3e3e3;
+  --text: #fff;
+  --loading_inner: #708c75;
+  --loading_border: #f3f3f3;
+  --border: #ccc;
+  --error: red;
+  /*--gradient_c1: #2a5470;
+  --gradient_c2: #4c4177;*/
+  --gradient_c1: #647DEE;
+  --gradient_c2: #7f53ac;
+}
+
+#chat-container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#create-button{
+  margin: 10px 0;
+  width: 40vw;
+  max-width: 500px;
+  background-color: var(--btn);
+  border: none;
+  border-radius: 5px;
+  color: var(--btn_text);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+#create-button:hover {
+  background-color: var(--btn_hover);
+}
+
+#header {
+  background-color: var(--top);
+  color: var(--top_text);
+  padding: 20px;
+}
+
+#header h1 {
+  margin: 0;
+}
+
+#hnm {
+  cursor: pointer;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  max-width: 80vw;
+  margin-inline: auto;
+  padding-inline: 2rem;
+  color: var(--text);
+}
+
+.wrapper h2 {
+  font-size: 2rem;
+}
+
+.wrapper p {
+  font-size: 1.4rem;
+}
+
+.wrapper button {
+  padding-block: 0.7rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+}
+
+.intro {
+  padding-block: 5rem;
+  background-color: var(--link);
+  background-image: linear-gradient(45deg,var(--gradient_c1),var(--gradient_c2));
+}
+
+.info {
+  padding-block: 5rem;
+  background-color: var(--mid);
+  min-height: 45vh;
+}
+
+.info h2 {
+  color: var(--top_text);
+  margin-bottom: 5vh;
+}
+
+#card {
+  display: inline-block;
+  vertical-align: top;
+  background-color: var(--link);
+  border-radius: 5px;
+  margin: 1vw;
+  margin-bottom: 2vw;
+  padding: 1vw;
+  width: 12vw;
+  min-width: 200px;
+  height: 300px;
+}
+
+#card:hover {
+  background-color: var(--link_hover);
+}
+
+#card h3 {
+  font-size: 1.4rem;
+}
+
+#card p {
+  font-size: 1.1rem;
+}
+
+footer {
+  height: 8%;
+  margin: 0px;
+  padding: 1rem;
+  background-color: var(--top);
+  text-align: center;
+}
+
+.footer-el {
+  display: inline-block;
+  vertical-align: top;
+  width: 30vw;
+  text-align: center;
+  color: var(--top_text);
+  margin-top: 2%;
+}

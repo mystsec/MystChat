@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>Myst Private Chat</title>
+    <link rel="stylesheet" href="../static/atemp.css" />
+    <link rel="icon" type="image/x-icon" href="../static/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="You have been invited to join this anonymous, encrypted, private chat!">
+
+  </head>
+  <body>
+    <div id="header">
+      <h1 id="hnm">Myst</h1>
+    </div>
+
+    <div id="chat-room">
+      <div id="messages" hidden="none">
+        <!-- messages will be added here dynamically using JavaScript -->
+      </div>
+      <form id="message-form">
+        {% csrf_token %}
+        <div hidden="none" id="new-msgs-below"><p></p></div>
+        <input id="message-input" type="text" autocomplete="off"  placeholder="Type your message here..." />
+        <button id="send" type="submit">Send</button>
+      </form>
+    </div>
+
+    <div id="cd">
+      <p id="cdt"></p>
+    </div>
+
+    <div id="init-popup" class="popup" style="display: block;">
+      <div class="popup-content">
+        <h3>You Have Been Invited to This Secure Chat</h3>
+        <p>This is a temporary, anonymous, and end-to-end encrypted chat.<br>Once entered, you will ONLY be ABLE to ACCESS the chat FROM THIS BROWSER TAB.<br>All data associated with this chat SELF-DESTRUCTS in 24 HOURS.</p>
+        <form id="init-form">
+          <button type="submit">Enter Chat</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="loading-popup" class="hidden">
+      <div class="loading-container">
+        <div class="loading-wheel"></div>
+        <p id="loading-message">Starting Secure Chat ...</p>
+      </div>
+    </div>
+
+    <div id="connection-popup" class="hidden">
+      <div class="loading-container">
+        <p>Connection Lost!</p>
+        <button id="reconnect">Reconnect</button>
+      </div>
+    </div>
+
+    <p id="cid" hidden="none"></p>
+    <p id="uid" hidden="none"></p>
+    <p id="auth" hidden="none"></p>
+    <script src="../static/atemp.js"></script>
+  </body>
+</html>
