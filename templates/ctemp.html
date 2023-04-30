@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>Myst</title>
+    <link rel="stylesheet" href="../static/ctemp.css" />
+    <link rel="icon" type="image/x-icon" href="../static/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div id="header">
+      <h1 id="hnm">Myst</h1>
+    </div>
+
+    <div id="chat-room">
+      <div id="messages" hidden="none">
+        <!-- messages will be added here dynamically using JavaScript -->
+      </div>
+      <form id="message-form">
+        {% csrf_token %}
+        <div hidden="none" id="new-msgs-below"><p></p></div>
+        <input id="message-input" type="text" autocomplete="off"  placeholder="Type your message here..." />
+        <button id="send" type="submit">Send</button>
+      </form>
+    </div>
+
+    <div id="link">
+      <p id="inm">The Invitee Has Not Joined Yet.</p>
+      <div id="invite"><p id="nti">Copy Invite Link</p></div>
+    </div>
+
+    <div id="cd" hidden="none">
+      <p id="cdt"></p>
+      <div id="end"><p id="endb">End Chat</p></div>
+    </div>
+
+    <div id="init-popup" class="popup" style="display: block;">
+      <div class="popup-content">
+        <h3>New Chat Created!</h3>
+        <div id="init-form">
+          <button id="start-chat">Copy Invite Link</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="loading-popup" class="hidden">
+      <div class="loading-container">
+        <div class="loading-wheel"></div>
+        <p id="loading-message">Starting Secure Chat ...</p>
+      </div>
+    </div>
+
+    <div id="connection-popup" class="hidden">
+      <div class="loading-container">
+        <p>Connection Lost!</p>
+        <button id="reconnect">Reconnect</button>
+      </div>
+    </div>
+
+    <p id="cid" hidden="none">{{cid}}</p>
+    <p id="uuid" hidden="none">{{uuid}}</p>
+    <p id="auth" hidden="none">{{auth}}</p>
+    <p id="id" hidden="none">{{id}}</p>
+    <script src="../static/ctemp.js"></script>
+  </body>
+</html>
