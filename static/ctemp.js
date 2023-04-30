@@ -5,7 +5,9 @@ var loadingMsg = document.getElementById('loading-message'); //select loading me
 const loadingPopup = document.getElementById('loading-popup');
 const connectPopup = document.getElementById('connection-popup');
 var popup = document.getElementById('init-popup');
+var qrPopup = document.getElementById('qr-popup');
 var inv_btn = document.getElementById('invite');
+var qr_btn = document.getElementById('qr-btn');
 var inv_msg = document.getElementById('inm');
 var cid = document.getElementById('cid').innerText;
 var current_cid = cid;
@@ -23,6 +25,12 @@ const urlParams = new URLSearchParams(queryString);
 document.getElementById('hnm').onclick = function() {
   window.open('/');
 }
+
+document.getElementById('close').addEventListener('click', async (event) => {
+  event.preventDefault();
+  qrPopup.style.display = 'none';
+  document.getElementById('qrcode').innerHTML = '';
+})
 
 window.onload = async function(){
   const csrftoken1 = document.getElementsByName('csrfmiddlewaretoken')[0].value;
@@ -56,6 +64,21 @@ window.onload = async function(){
         setTimeout(resetLinkBtn, 3000);
       });
 
+      qr_btn.addEventListener('click', async (event) => {
+        qrPopup.style.display = 'block';
+        loadingMsg.innerText = 'Generating QR Invite ...';
+        loadingPopup.classList.remove('hidden');
+        const qrcode = new QRCode(document.getElementById('qrcode'), {
+          text: 'https://myst.chat/join/?id=' + uuid + '&sd=' + b64_to_b64url(vals[1]) + '&st=' + b64_to_b64url(vals[2]),
+          width: 1*document.documentElement.clientWidth,
+          height: 1*document.documentElement.clientWidth,
+          colorDark : '#000',
+          colorLight : '#fff',
+          correctLevel : QRCode.CorrectLevel.H
+        });
+        loadingPopup.classList.add('hidden');
+      });
+
       await generate_AES_KEY().then(async (vals) => {
         current_key = vals[0];
 
@@ -79,6 +102,72 @@ window.onload = async function(){
         });
       });
     });
+
+
+
+    document.getElementById('show-qr').addEventListener('click', async (event) => {
+      event.preventDefault();
+      popup.style.display = 'none';
+      qrPopup.style.display = 'block';
+      loadingMsg.innerText = 'Generating QR Invite ...';
+      loadingPopup.classList.remove('hidden');
+
+      const qrcode = new QRCode(document.getElementById('qrcode'), {
+        text: 'https://myst.chat/join/?id=' + uuid + '&sd=' + b64_to_b64url(vals[1]) + '&st=' + b64_to_b64url(vals[2]),
+        width: 1*document.documentElement.clientWidth,
+        height: 1*document.documentElement.clientWidth,
+        colorDark : '#000',
+        colorLight : '#fff',
+        correctLevel : QRCode.CorrectLevel.H
+      });
+      loadingPopup.classList.add('hidden');
+
+      inv_btn.addEventListener('click', async (event) => {
+        navigator.clipboard.writeText('https://myst.chat/join/?id=' + uuid + '&sd=' + b64_to_b64url(vals[1]) + '&st=' + b64_to_b64url(vals[2]));
+        document.getElementById('nti').innerText = 'Link Copied!';
+        setTimeout(resetLinkBtn, 3000);
+      });
+
+      qr_btn.addEventListener('click', async (event) => {
+        qrPopup.style.display = 'block';
+        loadingMsg.innerText = 'Generating QR Invite ...';
+        loadingPopup.classList.remove('hidden');
+        const qrcode = new QRCode(document.getElementById('qrcode'), {
+          text: 'https://myst.chat/join/?id=' + uuid + '&sd=' + b64_to_b64url(vals[1]) + '&st=' + b64_to_b64url(vals[2]),
+          width: 1*document.documentElement.clientWidth,
+          height: 1*document.documentElement.clientWidth,
+          colorDark : '#000',
+          colorLight : '#fff',
+          correctLevel : QRCode.CorrectLevel.H
+        });
+        loadingPopup.classList.add('hidden');
+      });
+
+      await generate_AES_KEY().then(async (vals) => {
+        current_key = vals[0];
+
+        await AES_ENCRYPT(aes_key, current_key).then(async (ciph) => {
+
+          await fetch('../api/set/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/text', 'X-CSRFToken': csrftoken1},
+            body: JSON.stringify({ 'key': ciph[0] , 'iv': ciph[1], 'cid': cid, 'auth': auth })
+          })
+          .then(response => response.json())
+          .then(async data => {
+            console.log(data);
+            if (data[0] == 'success')
+            {
+              //setTimeout(show, 100);
+              getMessages(cid);
+              getMsgStream(cid);
+            }
+          });
+        });
+      });
+    });
+
+
 
   });
 
