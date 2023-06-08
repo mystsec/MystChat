@@ -1,7 +1,8 @@
 # Myst
 Myst is an accountless, temporary, and web-based encrypted messaging application (https://myst.chat).
 
-Myst is built using Django, and this repo contains the static and template files of the app. These
-files, verifiable by comparing to source files in browser, prove that each message is encrypted
-before being sent to server endpoints. I am happy to share server source code for education or
-research (non-commercial) purposes, please contact me at dev@myst.chat for any inquiries.
+Myst is built using Django, and this repo contains the Django app files for Myst. I built this project
+to learn cryptography in js and python, so please do not use Myst for sensitive information unless you
+have verified for yourself that my implementation of end-to-end encryption is secure. If you identify 
+a security vulnerablity, let me know following the steps outlined in `SECURITY.md`. If you have any 
+questions, feel free to email me at dev@myst.chat.
