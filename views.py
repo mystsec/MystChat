@@ -530,9 +530,12 @@ def rec(request):
                     dict = json.loads(request.body.decode("utf-8"))
                     del dict['cid']
                     del dict['auth']
-                    msg = Msgs(json = dict, cid = tcid)
-                    msg.save()
-                    response = {'success': True}
+                    if len(dict['message']) > 100000:
+                        response = {'success': False}
+                    else:
+                        msg = Msgs(json = dict, cid = tcid)
+                        msg.save()
+                        response = {'success': True}
                     return JsonResponse(response, safe=False)
                 except:
                     return render(request)
